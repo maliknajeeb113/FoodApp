@@ -10,6 +10,8 @@ import logo from "../FoodApp/burger.png";
  * - Search
  * - RestaurantContainer
  *   - RestaurentCard
+ *      - Image
+ *      - Name of restaurant, Stars, cuisine, delivery ETA
  * Footer
  * - Copyright
  * - Links
@@ -19,7 +21,7 @@ import logo from "../FoodApp/burger.png";
 
 const Header = () => {
   return (
-    <div className="header flex justify-between m-5 border-2 items-center">
+    <div className="header flex justify-between m-5 p-5 border-2 items-center">
       <div className="logo-container w-10">
         <img src={logo} className="logo" />
       </div>
@@ -33,20 +35,51 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+const RestaurantCard =()=>{
+
+    return(
+        <div className="res-card w-48 hover:border-2 hover:cursor-pointer justify-center p-1 m-2">
+
+            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/omcn5pdlhv3owikgjvxh" className="w-full"/>
+            <h2 className="pt-3 text-xl">NaanCha</h2>
+            <h4 className="pt-3">Naan, Chole Bhature, Lassi</h4>
+            <h4 className="pt-3">4.4 Stars</h4>
+            <h4 className="pt-3">30 minutes</h4>
+
+        </div>
+    )
+
 }
 
 const Body = () => {
-    return(<div>
-        
-    </div>)
-}
+  return (
+  <div className="body m-5">
+    <div className="search p-5">
+        Search
+    </div>
+    <div className="restaurant-container flex flex-wrap">
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+    </div>
 
+  </div>
+  );
+};
 
 const App = () => {
   return (
     <div className="app">
       <Header />
-      <Body/>
+      <Body />
     </div>
   );
 };
