@@ -19,12 +19,12 @@ import logo from "../FoodApp/burger.png";
 
 const Header = () => {
   return (
-    <div className="header">
-      <div className="">
+    <div className="header flex justify-between m-5 border-2 items-center">
+      <div className="logo-container w-10">
         <img src={logo} className="logo" />
       </div>
       <div className="nav-items">
-        <ul>
+        <ul className="flex gap-10">
           <li>Home</li>
           <li>About</li>
           <li>Contact Us</li>
@@ -33,12 +33,20 @@ const Header = () => {
       </div>
     </div>
   );
-};
+}
+
+const Body = () => {
+    return(<div>
+        
+    </div>)
+}
+
 
 const App = () => {
   return (
     <div className="app">
       <Header />
+      <Body/>
     </div>
   );
 };
