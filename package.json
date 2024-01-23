@@ -4,9 +4,10 @@
   "description": "Food App Made as react project",
   "main": "App.js",
   "scripts": {
-    "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test": "jest"
+    
   },
   "author": "Malik Najeeb Ul Habib",
   "license": "ISC",

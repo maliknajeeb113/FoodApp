@@ -37,14 +37,14 @@ const Header = () => {
   );
 };
 
-const RestaurantCard =()=>{
+const RestaurantCard =(props)=>{
 
     return(
         <div className="res-card w-48 hover:border-2 hover:cursor-pointer justify-center p-1 m-2">
 
             <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/omcn5pdlhv3owikgjvxh" className="w-full"/>
-            <h2 className="pt-3 text-xl">NaanCha</h2>
-            <h4 className="pt-3">Naan, Chole Bhature, Lassi</h4>
+            <h2 className="pt-3 text-xl">{props.resName}</h2>
+            <h4 className="pt-3">{props.cuisine}</h4>
             <h4 className="pt-3">4.4 Stars</h4>
             <h4 className="pt-3">30 minutes</h4>
 
@@ -60,15 +60,8 @@ const Body = () => {
         Search
     </div>
     <div className="restaurant-container flex flex-wrap">
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
+        <RestaurantCard resName='NaanCha'cuisine='Naan, Chole Bhature, Lassi'/>
+        <RestaurantCard resName='KFC'cuisine='Burger, Fastfood'/>
     </div>
 
   </div>
