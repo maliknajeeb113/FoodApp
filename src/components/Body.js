@@ -1,5 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
+import { RESTAURANT_LIST } from "../utils/configs";
 
 const Body = () => {
 
@@ -10,17 +12,21 @@ const Body = () => {
   },[]);
 
   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.7266016&lng=74.8570259&page_type=DESKTOP_WEB_LISTING");
+    const data = await fetch(RESTAURANT_LIST);
 
     const json = await data.json()
     //optional chaining
-    console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+
     setRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    // setRestaurantList(json?.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+
+  }
+
+  if (restaurantList.length===0){
+    return <Shimmer/>
   }
 
   return (
-    <div className="body m-5 ">
+    <div className="body container">
       <div className="filter p-5">
         <button
           className="rounded bg-amber-600 p-2"
