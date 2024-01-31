@@ -4,37 +4,34 @@ import Shimmer from "./Shimmer";
 import { RESTAURANT_LIST } from "../utils/configs";
 
 const Body = () => {
+  const [restaurantList, setRestaurantList] = useState([]);
 
-  const [restaurantList,setRestaurantList] = useState([])
-
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST);
 
-    const json = await data.json()
+    const json = await data.json();
     //optional chaining
-
-    setRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-
-  }
-
-  if (restaurantList.length===0){
-    return <Shimmer/>
-  }
-
-  return (
-    <div className="body container">
+    setRestaurantList(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+  // conditional rendering
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <div className="body container mx-auto">
       <div className="filter p-5">
         <button
           className="rounded bg-amber-600 p-2"
           onClick={() => {
-
-            const filteredList = restaurantList.filter(res=>res.info.avgRating>4)
-            setRestaurantList(filteredList)
-            
+            const filteredList = restaurantList.filter(
+              (res) => res.info.avgRating > 4
+            );
+            setRestaurantList(filteredList);
           }}
         >
           Top Restaurants
@@ -50,4 +47,3 @@ const Body = () => {
 };
 
 export default Body;
-
