@@ -23,8 +23,8 @@ const Body = () => {
   return restaurantList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body container mx-auto">
-      <div className="filter p-5">
+    <div className="container mx-auto">
+      <div className="filter py-2">
         <button
           className="rounded bg-amber-600 p-2"
           onClick={() => {
@@ -37,7 +37,7 @@ const Body = () => {
           Top Restaurants
         </button>
       </div>
-      <div className="restaurant-container flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center">
         {restaurantList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
