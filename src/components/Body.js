@@ -5,6 +5,7 @@ import { RESTAURANT_LIST } from "../utils/configs";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
 
   const [searchText, setSearchText] = useState("");
 
@@ -14,12 +15,13 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST);
-
     const json = await data.json();
     //optional chaining
     setRestaurantList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilteredRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      );
   };
   // conditional rendering
   return restaurantList.length === 0 ? (
@@ -40,7 +42,7 @@ const Body = () => {
               const filtered = restaurantList.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLocaleLowerCase())
               );
-              setRestaurantList(filtered);
+              setFilteredRestaurantList(filtered);
             }}
           >
             Search
@@ -60,7 +62,7 @@ const Body = () => {
       </div>
 
       <div className="flex flex-wrap justify-between gap-6">
-        {restaurantList.map((restaurant) => (
+        {filteredRestaurantList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
