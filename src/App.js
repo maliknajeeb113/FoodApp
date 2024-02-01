@@ -4,7 +4,7 @@ import Body from "./components/Body";
 
 const App = () => {
   return (
-    <div className="app bg-[#1f1f1f] text-white">
+    <div className="app text-white">
       <Header />
       <Body />
     </div>
