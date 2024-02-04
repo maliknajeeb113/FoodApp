@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
       
-      <div className="container flex justify-between mx-auto p-5 border-2 items-center">
+      <div className="container flex justify-between mx-auto p-5 border-b-2 items-center">
         <div className="text-xl font-bold">
           <span className="tracking-wide">Food</span><span className="bg-amber-600 p-[2px] text-black rounded-sm">Hub</span>
         </div>
