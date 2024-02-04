@@ -1,5 +1,6 @@
 import { useState } from "react";
 import burger from "../../src/assets/burger.png";
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -14,9 +15,9 @@ const Header = () => {
         </div>
         <div className="nav-items">
           <ul className="flex gap-10 items-center justify-center">
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact Us</li>
+            <li className="cursor-pointer"><Link to="/">Home</Link></li>
+            <li className="cursor-pointer"><Link to="/about">About</Link></li>
+            <li className="cursor-pointer"><Link to="/contact">Contact</Link></li>
             <li>Cart</li>
             <li><button className="rounded bg-amber-600 p-2 text-black" onClick={()=>btnName=="Login"?setBtnName("Logout"):setBtnName("Login")}>{btnName}</button></li>
             
