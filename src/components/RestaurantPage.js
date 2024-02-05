@@ -22,9 +22,7 @@ const RestaurantPage = () => {
             <h1>{name}</h1>
             <h2>{cuisines.join(", ")}</h2>
             <ul>
-                <li>Biryani</li>
-                <li>Burger</li>
-                <li>Coffee</li>
+                 <li>dynamic data here</li>
             </ul>
         </div>
     )
