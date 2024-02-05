@@ -15,14 +15,14 @@ const RestaurantPage = () => {
     },[])
 
     // const name = resInfo?.data?.cards[0]?.card?.card?.info.name;
-    const {name, cuisines} = resInfo?.data?.cards[0]?.card?.card?.info || {}
+    const {name, cuisines, costForTwoMessage} = resInfo?.data?.cards[0]?.card?.card?.info || {}
 
     return resInfo===null?<Shimmer/>:(
         <div>
             <h1>{name}</h1>
             <h2>{cuisines.join(", ")}</h2>
             <ul>
-                 <li>dynamic data here</li>
+                 <li>{costForTwoMessage}</li>
             </ul>
         </div>
     )
