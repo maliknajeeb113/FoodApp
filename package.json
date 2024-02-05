@@ -7,7 +7,6 @@
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
-    
   },
   "author": "Malik Najeeb Ul Habib",
   "license": "ISC",
@@ -19,6 +18,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.3"
   }
 }

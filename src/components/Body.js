@@ -4,44 +4,65 @@ import Shimmer from "./Shimmer";
 import { RESTAURANT_LIST } from "../utils/configs";
 
 const Body = () => {
+  const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
 
-  const [restaurantList,setRestaurantList] = useState([])
+  const [searchText, setSearchText] = useState("");
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST);
-
-    const json = await data.json()
+    const json = await data.json();
     //optional chaining
-
-    setRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-
-  }
-
-  if (restaurantList.length===0){
-    return <Shimmer/>
-  }
-
-  return (
-    <div className="body container">
-      <div className="filter p-5">
+    setRestaurantList(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      );
+  };
+  // conditional rendering
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <div className="container mx-auto">
+      <div className="flex flex-row justify-between py-3">
+        <div className="flex flex-row gap-2">
+          <input
+            type="text"
+            className="rounded text-black p-2"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          ></input>
+          <button
+            className="rounded bg-amber-600 px-4 text-black"
+            onClick={() => {
+              const filtered = restaurantList.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLocaleLowerCase())
+              );
+              setFilteredRestaurantList(filtered);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
-          className="rounded bg-amber-600 p-2"
+          className="rounded bg-amber-600 px-4 text-black"
           onClick={() => {
-
-            const filteredList = restaurantList.filter(res=>res.info.avgRating>4)
-            setRestaurantList(filteredList)
-            
+            const filteredList = restaurantList.filter(
+              (res) => res.info.avgRating > 4
+            );
+            setRestaurantList(filteredList);
           }}
         >
           Top Restaurants
         </button>
       </div>
-      <div className="restaurant-container flex flex-wrap justify-center">
-        {restaurantList.map((restaurant) => (
+
+      <div className="flex flex-wrap justify-between gap-6">
+        {filteredRestaurantList.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
@@ -50,4 +71,3 @@ const Body = () => {
 };
 
 export default Body;
-
