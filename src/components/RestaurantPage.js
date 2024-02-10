@@ -21,17 +21,18 @@ const RestaurantPage = () => {
     resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card
       .card;
 
-  return (
-    <div className="container flex flex-col items-center justify-center">
-      <div className="text-4xl font-bold">{name}</div>
-      <div>{cuisines.join(", ")}</div>
-      <ul>
-        {itemCards.map((item) => (
-          <li>{item.card.info.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    // const name = resInfo?.data?.cards[0]?.card?.card?.info.name;
+    const {name, cuisines, costForTwoMessage} = resInfo?.data?.cards[0]?.card?.card?.info || {}
 
-export default RestaurantPage;
+    return resInfo===null?<Shimmer/>:(
+        <div>
+            <h1>{name}</h1>
+            <h2>{cuisines.join(", ")}</h2>
+            <ul>
+                 <li>{costForTwoMessage}</li>
+            </ul>
+        </div>
+    )
+}
+
+export default RestaurantPage
