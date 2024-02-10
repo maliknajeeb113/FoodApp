@@ -16,12 +16,9 @@ const RestaurantPage = () => {
   }, []);
 
   if (resInfo === null) return <Shimmer />;
-  const { name, cuisines } = resInfo?.data?.cards[0]?.card?.card?.info;
-  const { itemCards } =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card
-      .card;
+  
 
-    // const name = resInfo?.data?.cards[0]?.card?.card?.info.name;
+  // const name = resInfo?.data?.cards[0]?.card?.card?.info.name;
     const {name, cuisines, costForTwoMessage} = resInfo?.data?.cards[0]?.card?.card?.info || {}
 
     return resInfo===null?<Shimmer/>:(
