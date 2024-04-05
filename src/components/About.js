@@ -1,7 +1,9 @@
+import User from "./User"
+
 const About = () =>{
     return(
         <div>
-            About hai bhai
+            <User name={'najeeb'}/>
         </div>
     )
 }
