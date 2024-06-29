@@ -1,20 +1,31 @@
 import { CDN_URL } from "../utils/configs";
+import Star from "../assets/Star";
 
 const RestaurantCard = (props) => {
-    const { resData } = props;
-    const {name, cuisines, cloudinaryImageId,avgRating, sla} = resData?.info;
-  
-    return (
-      <div className="hover:scale-105 transition duration-300 w-56 h-80 hover:bg-amber-600 hover:border-2 hover:border-amber-600 hover:cursor-pointer justify-center p-1 border-[1px]">
-        <img src={CDN_URL + cloudinaryImageId} className="w-full max-h-32 object-cover" />
-        <div className="">
-        <div className="pt-3 text-xl">{name}</div>
-        <div className="pt-3 text-sm ">{cuisines.join(", ")}</div>
-        <div className="pt-3 text-sm">{avgRating} Stars</div>
-        <div className="pt-3 text-sm">{sla?.slaString}</div>
+  const { resData } = props;
+  const { name, cuisines, cloudinaryImageId, avgRating, sla } = resData?.info;
+
+  function truncatedStr(string) {
+    return string.length > 20 ? string.slice(0, 25) + "..." : string;
+  }
+
+  return (
+    <div className="hover:scale-105 transition duration-300 w-[19.5rem] h-auto rounded-2xl hover:border-2 hover:border-amber-600 hover:cursor-pointer shadow-md justify-center  text-black">
+      <img
+        src={CDN_URL + cloudinaryImageId}
+        className="w-full max-h-40 object-cover shadow-inner rounded-t-2xl"
+      />
+      <div className="px-4 pb-4">
+        <div className="pt-3 text-xl">{truncatedStr(name)}</div>
+        <div className="pt-3 text-sm ">{truncatedStr(cuisines.join(", "))}</div>
+        <div className="pt-3 text-sm flex">
+          {avgRating} <span className="inline-block px-2"><Star /></span>
+          
         </div>
+        
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default RestaurantCard;
