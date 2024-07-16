@@ -31,7 +31,7 @@ const Body = () => {
   return restaurantList.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="container mx-auto">
+    <div className="container mx-auto pb-28">
       <div className="flex flex-row justify-between py-3">
         <div className="flex flex-row gap-2">
           <input

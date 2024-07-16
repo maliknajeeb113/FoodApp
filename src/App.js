@@ -9,7 +9,7 @@ import RestaurantPage from "./components/RestaurantPage";
 
 const App = () => {
   return (
-    <div className="app text-white">
+    <div className="">
       <Header />
       <Outlet/>
 

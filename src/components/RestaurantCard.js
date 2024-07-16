@@ -6,7 +6,7 @@ const RestaurantCard = (props) => {
   const { name, cuisines, cloudinaryImageId, avgRating, sla } = resData?.info;
 
   function truncatedStr(string) {
-    return string.length > 20 ? string.slice(0, 25) + "..." : string;
+    return string.length > 20 ? string.slice(0, 20) + "..." : string;
   }
 
   return (
