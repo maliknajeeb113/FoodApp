@@ -19,6 +19,7 @@ const Header = () => {
             <li className="cursor-pointer"><Link to="/">Home</Link></li>
             <li className="cursor-pointer"><Link to="/about">About</Link></li>
             <li className="cursor-pointer"><Link to="/contact">Contact</Link></li>
+            <li className="cursor-pointer"><Link to="/grocery">Grocery</Link></li>
             <li>Cart</li>
             <li><button className="rounded bg-amber-600 p-2 text-black" onClick={()=>btnName=="Login"?setBtnName("Logout"):setBtnName("Login")}>{btnName}</button></li>
             

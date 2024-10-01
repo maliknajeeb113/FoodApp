@@ -34,7 +34,7 @@ const RestaurantPage = () => {
     const {name, cuisines, costForTwoMessage} = resInfo?.data?.cards[2]?.card?.card?.info
     const {itemCards} = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card 
 
-    console.log(itemCards)
+    // console.log(itemCards)
 
     return (
         <div className="flex flex-col items-center justify-center">

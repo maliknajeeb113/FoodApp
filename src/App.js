@@ -6,6 +6,9 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider,Outlet } from "react-router-dom";
 import Contact from "./components/Contact";
 import RestaurantPage from "./components/RestaurantPage";
+import { lazy, Suspense } from "react";
+
+const Grocery = lazy(()=> import('./components/Grocery'))
 
 const App = () => {
   return (
@@ -38,6 +41,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantPage/>
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<div>Loading...</div>}><Grocery/></Suspense>
       }
     ]
   }

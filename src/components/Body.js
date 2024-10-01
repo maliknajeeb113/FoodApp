@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_LIST } from "../utils/configs";
 import { Link } from "react-router-dom";
+import useOfflineStatus from "../utils/useOfflineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -10,22 +11,35 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  // try {
+  //   useEffect(() => {
+  //     fetchData();
+  //   }, []);
+  // } catch (er) {
+  //   console.log(er);
+  // }
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST);
-    
+
     const json = await data.json();
-    console.log(json)
     //optional chaining
     setRestaurantList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setFilteredRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
+    setFilteredRestaurantList(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
+
+
+if (useOfflineStatus()) return(<h1 className="text-center text-4xl">Looks like you are offline</h1>)
+
+
   // conditional rendering
   return restaurantList.length === 0 ? (
     <Shimmer />
@@ -43,7 +57,9 @@ const Body = () => {
             className="rounded bg-amber-600 px-4 text-black"
             onClick={() => {
               const filtered = restaurantList.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLocaleLowerCase())
+                res.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLocaleLowerCase())
               );
               setFilteredRestaurantList(filtered);
             }}
@@ -66,8 +82,12 @@ const Body = () => {
 
       <div className="flex flex-wrap gap-6 justify-center">
         {filteredRestaurantList.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}>
-          <RestaurantCard  resData={restaurant} /></Link>
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
