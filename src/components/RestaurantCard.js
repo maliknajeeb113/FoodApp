@@ -1,5 +1,5 @@
 import { CDN_URL } from "../utils/configs";
-import Star from "../assets/Star";
+
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -19,7 +19,7 @@ const RestaurantCard = (props) => {
         <div className="pt-3 text-xl">{truncatedStr(name)}</div>
         <div className="pt-3 text-sm ">{truncatedStr(cuisines.join(", "))}</div>
         <div className="pt-3 text-sm flex">
-          {avgRating} <span className="inline-block px-2"><Star /></span>
+          {avgRating} <span className="inline-block px-2">⭐️</span>
           
         </div>
         

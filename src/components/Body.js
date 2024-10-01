@@ -5,7 +5,6 @@ import { RESTAURANT_LIST } from "../utils/configs";
 import { Link } from "react-router-dom";
 
 const Body = () => {
-  console.log(useState())
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
 
