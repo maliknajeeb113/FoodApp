@@ -36,9 +36,8 @@ const Body = () => {
     );
   };
 
-
-if (useOfflineStatus()) return(<h1 className="text-center text-4xl">Looks like you are offline</h1>)
-
+  if (useOfflineStatus())
+    return <h1 className="text-center text-4xl">Looks like you are offline</h1>;
 
   // conditional rendering
   return restaurantList.length === 0 ? (

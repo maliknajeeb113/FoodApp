@@ -6,36 +6,32 @@ class User extends React.Component {
 
     this.state = {
       userInfo: {
-        name : "",
+        name: "",
         location: "",
-        avatar_url: ""
-      }
+        avatar_url: "",
+      },
     };
   }
 
-  async componentDidMount(){
-    const data = await fetch("https://api.github.com/users/maliknajeeb113")
-    const json = await data.json()
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/maliknajeeb113");
+    const json = await data.json();
 
-    console.log(json)
+    console.log(json);
 
-    this.setState({userInfo : json})
-
+    this.setState({ userInfo: json });
   }
 
   render() {
     // destructuring stuff here
-    const {name, avatar_url} = this.state.userInfo;
+    const { name, avatar_url } = this.state.userInfo;
 
     return (
       <div className="container flex mx-auto items-center justify-center flex-col">
-        <div className="text-2xl">
-          {name}
-        </div>
+        <div className="text-2xl">{name}</div>
         <div>
-            <img src={avatar_url} className="rounded-full size-12"/>
+          <img src={avatar_url} className="rounded-full size-12" />
         </div>
-        
       </div>
     );
   }

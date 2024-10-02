@@ -1,6 +1,5 @@
 import { CDN_URL } from "../utils/configs";
 
-
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { name, cuisines, cloudinaryImageId, avgRating, sla } = resData?.info;
@@ -20,9 +19,7 @@ const RestaurantCard = (props) => {
         <div className="pt-3 text-sm ">{truncatedStr(cuisines.join(", "))}</div>
         <div className="pt-3 text-sm flex">
           {avgRating} <span className="inline-block px-2">⭐️</span>
-          
         </div>
-        
       </div>
     </div>
   );

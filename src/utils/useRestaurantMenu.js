@@ -1,25 +1,21 @@
 import { useEffect, useState } from "react";
 import { RESTAURANT_PAGE } from "../utils/configs";
 
-
 const useRestaurantMenu = (resId) => {
+  const [resInfo, setResInfo] = useState(null);
 
-    const [resInfo, setResInfo] = useState(null)
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-        useEffect(()=>{
-            fetchData();
-        },[])
+  const fetchData = async () => {
+    const data = await fetch(RESTAURANT_PAGE + resId);
+    const json = await data.json();
 
-        const fetchData = async () => {
-            const data = await fetch(
-                    RESTAURANT_PAGE+resId
-                  );
-            const json = await data.json()
+    setResInfo(json);
+  };
 
-            setResInfo(json)
-        }
-
-        return resInfo;
-}
+  return resInfo;
+};
 
 export default useRestaurantMenu;

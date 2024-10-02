@@ -1,11 +1,11 @@
-import User from "./User"
+import User from "./User";
 
-const About = () =>{
-    return(
-        <div>
-            <User/>
-        </div>
-    )
-}
+const About = () => {
+  return (
+    <div>
+      <User />
+    </div>
+  );
+};
 
-export default About
+export default About;
